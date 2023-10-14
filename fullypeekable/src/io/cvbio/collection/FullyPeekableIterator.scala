@@ -28,16 +28,16 @@ import scala.collection.{AbstractIterator, BufferedIterator, mutable}
 /** An iterator that is capable of buffering forward any number of elements. */
 trait FullyPeekableIterator[+A] extends BufferedIterator[A] {
 
-  /** Lift an element from this iterator without advancing the iterator. Stores peeked elements in memory. */
+  /** Lift an element from this iterator without advancing the iterator. May store peeked elements in memory. */
   def lift(index: Int): Option[A]
 
-  /** Lift many elements from this iterator without advancing the iterator. Stores peeked elements in memory. */
+  /** Lift many elements from this iterator without advancing the iterator. May store peeked elements in memory. */
   def liftMany(start: Int, end: Int): Seq[Option[A]]
 
   /** Peek elements while the predicate remains true. */
   def peekWhile(p: A => Boolean): FullyPeekableIterator[A]
 
-  /** Return this iterator as it is already buffered. */
+  /** Return this iterator since it is already buffered. */
   override def buffered: this.type = this
 }
 

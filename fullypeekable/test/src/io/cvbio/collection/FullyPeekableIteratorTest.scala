@@ -23,7 +23,7 @@
  */
 package io.cvbio.collection
 
-import io.cvbio.collection.FullyPeekableIterator._
+import io.cvbio.collection.FullyPeekableIterator.FullyPeekableIteratorImpl
 import org.scalatest.OptionValues
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -31,7 +31,24 @@ import org.scalatest.matchers.should.Matchers
 /** Unit tests for [[FullyPeekableIterator]]. */
 class FullyPeekableIteratorTest extends AnyFlatSpec with OptionValues with Matchers {
 
-  "FullyPeekableIterator" should "iterate over elements like a normal iterator" in {
+  "FullyPeekableIterator" should "make an iterator fully peekable when used as a trait" in {
+    class FullyPeekable(iterator: Iterator[Int]) extends FullyPeekableIterator[Int] {
+      private val underlying = iterator.fullyPeekable
+      override def lift(index: Int): Option[Int] = underlying.lift(index)
+      override def liftMany(start: Int, end: Int): Seq[Option[Int]] = underlying.liftMany(start, end)
+      override def peekWhile(p: Int => Boolean): FullyPeekableIterator[Int] = underlying.peekWhile(p)
+      override def head: Int = underlying.head
+      override def hasNext: Boolean = underlying.hasNext
+      override def next(): Int = underlying.next()
+    }
+    val expected = Seq(1, 2, 3)
+    val peekable = new FullyPeekable(expected.iterator)
+    peekable.liftMany(0, 3) should contain theSameElementsInOrderAs Seq(Some(1), Some(2), Some(3), None)
+    peekable.toSeq should contain theSameElementsInOrderAs expected
+    peekable.isEmpty shouldBe true
+  }
+
+  "FullyPeekableIteratorImpl" should "iterate over elements like a normal iterator" in {
     val expected = Seq(1, 2, 3)
     val peekable = expected.iterator.fullyPeekable
     peekable.toSeq should contain theSameElementsInOrderAs expected
