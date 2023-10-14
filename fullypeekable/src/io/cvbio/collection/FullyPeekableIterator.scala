@@ -87,7 +87,6 @@ object FullyPeekableIterator {
               index += 1
               _next
             }
-
           }.fullyPeekable
         }
 
@@ -106,7 +105,7 @@ object FullyPeekableIterator {
           this
         }
 
-        /** The next element in the iterator which will advance the iterator. */
+        /** The next element in the iterator which may advance the iterator. */
         def next(): A = queue.removeHeadOption().getOrElse(iter.next())
       }
     }
