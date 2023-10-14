@@ -1,0 +1,7 @@
+*.class
+*.log
+**/*.iml
+.idea/*
+out/*
+.bsp/*
+.DS_Store
