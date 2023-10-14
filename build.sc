@@ -26,7 +26,7 @@ object fullypeekable extends ScalaModule with PublishModule with ScoverageModule
 
   /** POM publishing settings for this package. */
   def pomSettings: Target[PomSettings] = PomSettings(
-    description    = "Peek forward in an iterator for as far as you'd like, memory allowing!",
+    description    = "Peek forward in an iterator as far as you'd like, memory allowing!",
     organization   = "io.cvbio.collection",
     url            = "https://github.com/clintval/fullypeekable",
     licenses       = Seq(License.MIT),
