@@ -6,13 +6,13 @@
 
 Peek forward in an iterator for as far as you'd like, memory allowing!
 
+![Laugavegur Trail, Iceland](.github/img/cover.jpg)
+
 ```scala
 val peekable = Seq(1, 2, 3).iterator.fullyPeekable
 peekable.liftMany(0, 3) //  Seq(Some(1), Some(2), Some(3), None)
 peekable.toSeq // Seq(1, 2, 3)
 ```
-
-![Laugavegur Trail, Iceland](.github/img/cover.jpg)
 
 #### If Mill is your build tool
 
