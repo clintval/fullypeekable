@@ -1,5 +1,4 @@
 import $ivy.`com.lihaoyi::mill-contrib-scoverage:$MILL_VERSION`
-import $ivy.`com.lihaoyi::mill-contrib-scoverage:`
 import mill._
 import mill.contrib.scoverage.ScoverageModule
 import mill.define.Target
@@ -27,7 +26,7 @@ object fullypeekable extends ScalaModule with PublishModule with ScoverageModule
 
   /** POM publishing settings for this package. */
   def pomSettings: Target[PomSettings] = PomSettings(
-    description    = "A modern bidirectional map in Scala",
+    description    = "Peek forward in an iterator for as far as you'd like, memory allowing!",
     organization   = "io.cvbio.collection",
     url            = "https://github.com/clintval/fullypeekable",
     licenses       = Seq(License.MIT),

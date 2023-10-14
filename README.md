@@ -4,9 +4,9 @@
 [![Coverage Status](https://codecov.io/gh/clintval/fullypeekable/branch/main/graph/badge.svg)](https://codecov.io/gh/clintval/fullypeekable)
 [![Language](https://img.shields.io/badge/language-scala-c22d40.svg)](https://www.scala-lang.org/)
 
-Peek an iterator for as far as you'd like, memory allowing!
+Peek forward in an iterator for as far as you'd like, memory allowing!
 
-![Pacific City, Oregon](.github/img/cover.jpg)
+![Laugavegur Trail, Iceland](.github/img/cover.jpg)
 
 ```scala
 val original = Seq(1, 2, 3)
