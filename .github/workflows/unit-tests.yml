@@ -4,7 +4,7 @@ on: [ push, pull_request ]
 
 jobs:
   unit-tests:
-    runs-on: ubuntu-18.04 # bionic
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         suite: [ fullypeekable ]
@@ -36,6 +36,8 @@ jobs:
           ./mill --no-server --disable-ticker ${{ matrix.suite }}.scoverage.xmlReport
       - name: Upload Code Coverage Report
         if: matrix.java-version == '11'
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           override_commit: ${{ github.sha }}
