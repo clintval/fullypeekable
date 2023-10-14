@@ -10,8 +10,8 @@ Peek forward in an iterator for as far as you'd like, memory allowing!
 
 ```scala
 val peekable = Seq(1, 2, 3).iterator.fullyPeekable
-peekable.liftMany(0, 3) //  Seq(Some(1), Some(2), Some(3), None)
-peekable.toSeq // Seq(1, 2, 3)
+peekable.liftMany(0, 3) // Seq(Some(1), Some(2), Some(3), None)
+peekable.toSeq          // Seq(1, 2, 3)
 ```
 
 #### If Mill is your build tool
