@@ -107,7 +107,7 @@ object FullyPeekableIterator {
         }
 
         /** The next element in the iterator which will advance the iterator. */
-        def next(): A = if (queue.nonEmpty) queue.dequeue() else iter.next()
+        def next(): A = queue.removeHeadOption().getOrElse(iter.next())
       }
     }
   }
