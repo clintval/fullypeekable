@@ -59,7 +59,7 @@ object FullyPeekableIterator {
         def head: A = headOption.getOrElse(Iterator.empty.next())
 
         /** Lift an element from this iterator without advancing the iterator. */
-        override def headOption: Option[A] = lift(0)
+        override def headOption: Option[A] = lift(index = 0)
 
         /** The known size of this iterator. If there is no known size, return <= -1. */
         override def knownSize: Int = {
